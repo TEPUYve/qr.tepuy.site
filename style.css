@@ -13,8 +13,8 @@ body {
     padding: 0;
     min-height: 100vh;
     font-family: var(--font);
-    background: radial-gradient(ellipse at bottom, var(--bgColor) 0%, var(--bgColor2) 100%);
-    /* background-image: url('https://bit.ly/3nFVqJh'); */
+    /* background: radial-gradient(ellipse at bottom, var(--bgColor) 0%, var(--bgColor2) 100%); */
+    background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fes.linkedin.com%2Fpulse%2Finteligencia-artificial-ventas-y-marketing-parte-i-l%25C3%25B3pez-mart%25C3%25ADn&psig=AOvVaw2TxI4srdis5LqkjIZRnnXH&ust=1724896852802000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCKDk--_LlogDFQAAAAAdAAAAABA2');
     opacity: 0;
     animation: 1s ease-out var(--delay) 1 transitionAnimation; /* duration/timing-function/delay/iterations/name */
     animation-fill-mode: forwards;
