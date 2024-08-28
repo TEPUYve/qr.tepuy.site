@@ -3,7 +3,7 @@
 :root {
     --bgColor: hwb(216 27% 39%);
     --bgColor2: hwb(223 35% 51%);
-    --accentColor: rgba(0, 0, 0, 0.26);
+    --accentColor: rgba(0, 0, 0, 0.918);
     --font: 'Karla', sans-serif;
     --delay: .3s;
 }
