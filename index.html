@@ -1,70 +1,507 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="es">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TEPUY | Linktree</title>
-    <!-- Favicon -->
-    <link rel="icon" href="https://qr.tepuy.site/logo-tepuy.png" type="image/x-icon" />
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <!-- Font Awesome icons -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-    <!-- Core theme CSS -->
-    <link rel="stylesheet" href="style.css">
-  </head>
+    <meta name="description" content="Conecta con TEPUY a través de nuestros diferentes canales y servicios. Soluciones IT innovadoras en Venezuela.">
+    <meta name="keywords" content="TEPUY, enlaces, contacto, WhatsApp, LinkedIn, Instagram, servicios IT Venezuela">
+    <link rel="icon" href="images/tepuy.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gray-100: #f8f9fa;
+            --gray-200: #e9ecef;
+            --gray-300: #dee2e6;
+            --gray-400: #ced4da;
+            --gray-500: #adb5bd;
+            --gray-600: #6c757d;
+            --gray-700: #495057;
+            --gray-800: #343a40;
+            --gray-900: #212529;
+            
+            --yellow: #FFD700;
+            --blue: #0056b3;
+            --red: #CC0000;
+            
+            --gradient-yellow: linear-gradient(135deg, #FFD700, #FFA500);
+            --gradient-blue: linear-gradient(135deg, #0056b3, #0077cc);
+            --gradient-red: linear-gradient(135deg, #CC0000, #FF3333);
+            --gradient-tricolor: linear-gradient(90deg, #FFD700 33.3%, #0056b3 33.3%, #0056b3 66.6%, #CC0000 66.6%);
+        }
 
-  <body>
-    <header>
-      <a id="profilePicture" href="#popup">
-        <img src="logo-tepuy.png" alt="Profile Picture">
-      </a>
-      <h1 id="userName">TEPUY</h1>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--gray-800);
+            background-color: var(--gray-100);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: var(--gray-900);
+            color: white;
+            padding: 1rem 0;
+            position: relative;
+            width: 100%;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-left: 0.5rem;
+            background: var(--gradient-tricolor);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gray-900);
+            color: white;
+            padding: 4rem 0 3rem;
+            text-align: center;
+            background-image: 
+                linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23212529"/></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        /* Links Section */
+        .links {
+            padding: 4rem 0;
+            flex: 1;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2rem;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-tricolor);
+            margin: 0.5rem auto;
+            border-radius: 2px;
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Para pantallas más grandes, centramos el último elemento cuando hay número impar */
+        @media (min-width: 992px) {
+            .links-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            /* Cuando hay 7 elementos, el último se centra */
+            .links-grid .link-card:last-child:nth-child(odd) {
+                grid-column: 1 / -1;
+                justify-self: center;
+                max-width: 300px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .links-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            /* Para 7 elementos en 3 columnas, el último se centra en la segunda columna */
+            .links-grid .link-card:last-child:nth-child(3n+1) {
+                grid-column: 2;
+            }
+        }
+
+        .link-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: var(--gray-800);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-tricolor);
+        }
+
+        .link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .link-icon {
+            width: 70px;
+            height: 70px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--gradient-blue);
+            position: relative;
+        }
+
+        .link-icon::after {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            border-radius: 50%;
+            background: var(--gradient-tricolor);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .link-card:hover .link-icon::after {
+            opacity: 1;
+        }
+
+        .link-icon img, .link-icon svg {
+            width: 35px;
+            height: 35px;
+            filter: brightness(0) invert(1);
+        }
+
+        .link-card h3 {
+            margin-bottom: 0.8rem;
+            color: var(--gray-800);
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .link-card p {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--gray-900);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .footer a {
+            color: var(--yellow);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer a:hover {
+            color: white;
+        }
+
+        .footer-logo {
+            background: var(--gradient-tricolor);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+        }
+
+        /* Botón flotante de WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 25px;
+            left: 25px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-float img, .whatsapp-float svg {
+            width: 35px;
+            height: 35px;
+            filter: brightness(0) invert(1);
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .logo-text {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h2 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .links-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .link-card {
+                padding: 1.5rem;
+            }
+            
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                left: 20px;
+            }
+            
+            .whatsapp-float img, .whatsapp-float svg {
+                width: 28px;
+                height: 28px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h2 {
+                font-size: 1.6rem;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .link-card {
+                padding: 1.2rem;
+            }
+            
+            .link-icon {
+                width: 60px;
+                height: 60px;
+                margin-bottom: 1rem;
+            }
+            
+            .link-icon img, .link-icon svg {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo-container">
+                <img src="images/logo.png" alt="TEPUY Logo" class="logo-img">
+                <span class="logo-text">TEPUY</span>
+            </div>
+        </div>
     </header>
 
-    <main>
-      <div id="links">
-        <a class="link" href="https://tepuy.site/" target="_blank">
-          <i class="fa fa-globe"></i> Home
-        </a>
-        <a class="link" href="https://links.tepuy.site/WhatsApp" target="_blank">
-          <i class="fab fa-whatsapp"></i> Whatsapp
-        </a>
-        <a class="link" href="https://www.linkedin.com/in/figueredoalvarez/" target="_blank">
-          <i class="fab fa-linkedin"></i> Linkedin
-        </a>
-        <a class="link" href="https://links.tepuy.site/cita" target="_blank">
-          <i class="fa fa-calendar"></i> Agenda
-        </a>
-        <a class="link" href="https://links.tepuy.site/it" target="_blank">
-          <i class="fab fa-instagram"></i> Ig IT
-        </a>
-        <a class="link" href="https://links.tepuy.site/garage" target="_blank">
-          <i class="fab fa-instagram"></i> Ig Garage
-        </a>
-        <a class="link" href="https://links.tepuy.site/cafecito" target="_blank">
-          <i class="fa fa-coffee"></i> Cafecito
-        </a>
-      </div>
-    </main>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Conecta con TEPUY</h2>
+                <p>Accede a todos nuestros servicios, redes sociales y canales de contacto en un solo lugar</p>
+            </div>
+        </div>
+    </section>
 
-    <footer>
-      <p id="hashtag">Designed by TEPUY ❤</p>
+    <!-- Links Section -->
+    <section class="links">
+        <div class="container">
+            <h2 class="section-title">Nuestros Enlaces</h2>
+            <div class="links-grid">
+                <a href="https://tepuy.site" class="link-card" target="_blank">
+                    <div class="link-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
+                            <path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
+                        </svg>
+                    </div>
+                    <h3>Sitio Web Principal</h3>
+                    <p>Visita nuestro sitio web oficial con toda la información sobre nuestros servicios IT</p>
+                </a>
+
+                <a href="https://links.tepuy.site/WhatsApp" class="link-card" target="_blank">
+                    <div class="link-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                        </svg>
+                    </div>
+                    <h3>WhatsApp Business</h3>
+                    <p>Comunícate directamente con nuestro equipo para consultas y soporte técnico</p>
+                </a>
+
+                <a href="https://www.linkedin.com/in/figueredoalvarez/" class="link-card" target="_blank">
+                    <div class="link-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </div>
+                    <h3>LinkedIn Profesional</h3>
+                    <p>Conecta con nuestro equipo en la red profesional más importante</p>
+                </a>
+
+                <a href="https://links.tepuy.site/cita" class="link-card" target="_blank">
+                    <div class="link-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19a2 2 0 002 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                        </svg>
+                    </div>
+                    <h3>Agendar Cita</h3>
+                    <p>Reserva una consultoría personalizada para tus proyectos IT</p>
+                </a>
+
+                <a href="https://links.tepuy.site/it" class="link-card" target="_blank">
+                    <div class="link-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/>
+                        </svg>
+                    </div>
+                    <h3>Instagram IT</h3>
+                    <p>Sigue nuestro contenido especializado en soluciones tecnológicas</p>
+                </a>
+
+                <a href="https://links.tepuy.site/garage" class="link-card" target="_blank">
+                    <div class="link-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/>
+                        </svg>
+                    </div>
+                    <h3>Marketplace</h3>
+                    <p>Descubre productos y servicios en nuestro marketplace de Instagram</p>
+                </a>
+
+                <a href="https://links.tepuy.site/cafecito" class="link-card" target="_blank">
+                    <div class="link-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2zm0 5h-2V5h2v3zM4 19h16v2H4z"/>
+                        </svg>
+                    </div>
+                    <h3>Invitame un Cafecito</h3>
+                    <p>Apoya nuestro trabajo y continúa el desarrollo de soluciones innovadoras</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Made with ❤️ by <span class="footer-logo">TEPUY</span> All rights reserved © Copyright 2025 - <span class="footer-logo">TEPUY</span></p>
+            <a href="https://tepuy.site" target="_blank">Visita nuestro sitio principal</a>
+        </div>
     </footer>
 
-    <div class="overlay" id="popup">
-      <div class="popup">
-        <div class="popup-photo">
-          <a href="https://tepuy.site" target="_blank">
-            <img src="logo-tepuy.png" alt="Profile Picture">
-          </a>
-        </div>
-        <div class="popup-quote">
-          Somos TEPUY, un equipo de emprendedores venezolanos apasionados por la tecnología. Desarrollamos soluciones innovadoras y personalizadas para nuestros clientes, utilizando técnicas de vanguardia.
-          Conoce más sobre nosotros y cómo podemos ayudarte. ¡Contáctanos!
-        </div>
-        <a class="popup-close" onclick="history.back()">&times;</a>
-      </div>
-    </div>
-  </body>
+    <!-- Botón Flotante WhatsApp -->
+    <a href="https://links.tepuy.site/WhatsApp" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+        </svg>
+    </a>
+</body>
 </html>
